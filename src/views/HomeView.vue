@@ -1,9 +1,20 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+
+    <div class="row">
+      
+        <ThePosts />
+        <!-- /col -->
+      
+        <TheCategories />
+        <!-- /aside -->
+    </div>
+    <!-- /row -->
+
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import ThePosts from '../components/ThePosts.vue'
+import PostView from './PostView.vue'
+import TheCategories from '../components/TheCategories.vue'
+</script>

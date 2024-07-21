@@ -13,7 +13,7 @@
         <!-- /post meta -->
         <div class="post-content">
             <div class="dropcaps">
-                <p>{{ model.post.content }}</p>
+                <p v-html="model.post.content"></p>
             </div>
         </div>
         <!-- /post -->

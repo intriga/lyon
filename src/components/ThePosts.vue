@@ -14,7 +14,7 @@
                     <div class="post_info">
                         <small>{{ format_date(value.created_at) }}</small>
                         <h3><a :href="value.slug">{{ value.title }}</a></h3>
-                        <p>{{ extractExcerpt(value.content) }}</p>
+                        <p v-html="extractExcerpt(value.content)"></p>
                         <ul>
                             <li>
                                 <div class="thumb"><img src="../../public/img/thumb_blog.jpg" alt=""></div> Jessica Hoops

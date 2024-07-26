@@ -1,7 +1,7 @@
 <template>
     <div class="col-lg-9">
         <article class="blog "
-                v-for="value in posts" :key="value">
+                v-for="value in posts.data" :key="value">
             <div class="row g-0">
                 <div class="col-lg-7">
                     <figure>
@@ -27,19 +27,16 @@
         </article>
         <!-- /article -->        
 
-        <nav aria-label="...">
-            <ul class="pagination pagination-sm">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
+        
+        <paginate
+          :page-count="posts.last_page"
+          :click-handler="getPosts"
+          :prev-text="'Prev'"
+          :next-text="'Next'"
+          :container-class="'pagination pagination-sm'"
+          :page-class="'page-item'"
+        >
+        </paginate>
         <!-- /pagination -->
     </div>
 </template>
@@ -47,6 +44,9 @@
 <script>
 import axios from 'axios'
 import moment from 'moment'
+import Paginate from "vuejs-paginate-next";
+
+
 
 export default {
   data() {
@@ -55,13 +55,17 @@ export default {
     }
   },
 
+  components: {
+      paginate: Paginate,
+    },
+
   mounted() {
     this.getPosts()
   },
 
   methods: {
-    getPosts() {
-      axios.get('http://localhost/api/posts').then((res) => {
+    getPosts(page = 1) {
+      axios.get('http://localhost/api/posts?page=' + page).then((res) => {
         this.posts = res.data
         console.log(this.posts)
       })

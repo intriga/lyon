@@ -51,7 +51,7 @@ import moment from 'moment'
 export default {
   data() {
     return {
-      categories: {}
+      categories: []
     }
   },
 

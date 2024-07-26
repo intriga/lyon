@@ -1,7 +1,7 @@
 <template>
     <div class="col-lg-9">
         <article class="blog "
-                v-for="value in posts" :key="value">
+                v-for="value in categories.posts" :key="value">
             <div class="row g-0">
                 <div class="col-lg-7">
                     <figure>
@@ -13,13 +13,13 @@
                 <div class="col-lg-5">
                     <div class="post_info">
                         <small>{{ format_date(value.created_at) }}</small>
-                        <h3><a :href="value.slug">{{ value.title }}</a></h3>
+                        <h3><a :href="'/'+value.slug">{{ value.title }}</a></h3>
                         <p v-html="extractExcerpt(value.content)"></p>
                         <ul>
                             <li>
                                 <div class="thumb"><img src="../../public/img/thumb_blog.jpg" alt=""></div> Jessica Hoops
                             </li>
-                            <li><i class="icon_comment_alt"></i> {{ value.category.title }}</li>
+                            <li><i class="icon_comment_alt"></i> {{ categories.title }}</li>
                         </ul>
                     </div>
                 </div>
@@ -51,19 +51,26 @@ import moment from 'moment'
 export default {
   data() {
     return {
-      posts: []
+      categories: {}
     }
   },
 
   mounted() {
-    this.getPosts()
+    this.getCategories()
   },
 
   methods: {
-    getPosts() {
-      axios.get('http://localhost/api/posts').then((res) => {
-        this.posts = res.data
-        console.log(this.posts)
+    getCategories() {
+
+      const urlFull = window.location.href
+      const urlParts = urlFull.split('/')
+
+      const slug = urlParts[urlParts.length - 1]
+    //   console.log(slug);
+
+      axios.get(`http://localhost/api/category/${slug}`).then((res) => {
+        this.categories = res.data
+        console.log(this.categories)
       })
     },
 

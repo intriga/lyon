@@ -44,7 +44,7 @@
             </div>
             <ul class="cats"
                 v-for="value in categories" :key="value">
-                <li><a :href="value.slug">{{ value.title }}</a></li>
+                <li><a :href="'/category/'+value.slug">{{ value.title }}</a></li>
             </ul>
         </div>
         <!-- /widget -->

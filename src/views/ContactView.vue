@@ -37,7 +37,7 @@
 						<h4>Send a message</h4>
 						<p>Ex quem dicta delicata usu, zril vocibus maiestatis in qui.</p>
 						<div id="message-contact"></div>
-						<form method="post" action="https://www.ansonika.com/panagea/phpmailer/contact_template_email.php" id="contactform" autocomplete="off">
+						<form method="post" action="#" id="contactform" autocomplete="off">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">

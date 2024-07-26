@@ -66,7 +66,7 @@
 					<div class="col-lg-6 wow position-relative" data-wow-offset="150">
 						<figure class="block-reveal">
 							<div class="block-horizzontal"></div>
-							<img src="../../public/img/about_1.jpg" class="img-fluid" alt="">
+							<img :src="aboutImage" class="img-fluid" alt="">
               
 						</figure>
 					</div>
@@ -87,6 +87,8 @@
 </template>
 
 <script setup>
+import aboutImage from '../../public/img/about_1.jpg';
+
 import { RouterLink, RouterView } from 'vue-router'
 import ThePosts from '../components/ThePosts.vue'
 import TheCategories from '../components/TheCategories.vue'
